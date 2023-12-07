@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function generateRandomNumber() {
+            return Math.floor(Math.random() * 100 + 1);
+        }
+    
+        function generateRandomArray() {
+            let array = [];
+            for (let i = 0; i < 50; i++) {
+                array.push(generateRandomNumber());
+            }
+            return array;
+        }
+    
+        function countMultiplesOfThree(array) {
+            return array.filter(num => num % 3 === 0).length;
+        }
+    
+        function displayNumbersWithEvenIndices(array) {
+            const evenIndexNumbers = array.filter((num, index) => index % 2 === 0);
+            console.log("Liczby o parzystych indeksach:", evenIndexNumbers);
+        }
+    
+        function countNumbersGreaterThanFifteen(array) {
+            return array.filter(num => num > 15).length;
+        }
+    
+        function findIndexOfMinElement(array) {
+            return array.indexOf(Math.min(...array));
+        }
+    
+        function countTwoDigitNumbers(array) {
+            return array.filter(num => num >= 10 && num <= 99).length;
+        }
+    
+        function countNumbersWithEvenDigitSum(array) {
+            function isEvenDigitSum(num) {
+                const digitSum = num.toString().split('').map(Number).reduce((a, b) => a + b, 0);
+                return digitSum % 2 === 0;
+            }
+            return array.filter(num => isEvenDigitSum(num)).length;
+        }
+    
+        function displayNumbersWithAllEvenDigits(array) {
+            function allDigitsEven(num) {
+                return num.toString().split('').every(digit => parseInt(digit) % 2 === 0);
+            }
+            console.log("Liczby, których wszystkie cyfry są parzyste:", array.filter(num => allDigitsEven(num)));
+        }
+    
+        console.log("Tablica wygenerowana losowo:", generateRandomArray());
+        console.log("Liczba elementów podzielnych przez 3:", countMultiplesOfThree(generateRandomArray()));
+        displayNumbersWithEvenIndices(generateRandomArray());
+        console.log("Liczba elementów większych od 15:", countNumbersGreaterThanFifteen(generateRandomArray()));
+        console.log("Indeks najmniejszego elementu:", findIndexOfMinElement(generateRandomArray()));
+        console.log("Liczba dwucyfrowych elementów:", countTwoDigitNumbers(generateRandomArray()));
+        console.log("Liczba elementów o parzystej sumie cyfr:", countNumbersWithEvenDigitSum(generateRandomArray()));
+        displayNumbersWithAllEvenDigits(generateRandomArray());
+    </script>
+</body>
+</html>

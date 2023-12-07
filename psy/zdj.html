@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria Obrazków</title>
+    <style>
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #gallery {
+            display: flex;
+        }
+
+        #modal {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        #modal img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        #closeModal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: #fff;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="gallery">
+    <img src="pies1-szary.jpg" alt="pies 1" class="thumbnail" onmouseover="changeImage(this, 'pies1.jpg')" onmouseout="changeImage(this, 'pies1-szary.jpg')" onclick="openModal('pies1.jpg')">
+    <img src="pies2-szary.jpg" alt="pies 2" class="thumbnail" onmouseover="changeImage(this, 'pies2.jpg')" onmouseout="changeImage(this, 'pies2-szary.jpg')" onclick="openModal('pies2.jpg')">
+    <img src="pies3-szary.jpg" alt="pies 3" class="thumbnail" onmouseover="changeImage(this, 'pies3.jpg')" onmouseout="changeImage(this, 'pies3-szary.jpg')" onclick="openModal('pies3.jpg')">
+</div>
+
+<div id="modal">
+    <img id="modalImage" src="" alt="Modal Image">
+</div>
+
+<script>
+    function openModal(imageSrc) {
+        document.getElementById("modalImage").src = imageSrc;
+        document.getElementById("modal").style.display = "flex";
+    }
+
+
+    function changeImage(element, newSrc) {
+        element.src = newSrc;
+    }
+
+</script>
+
+</body>
+</html>

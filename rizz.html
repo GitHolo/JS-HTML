@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Zadania JavaScript</title>
+</head>
+<body>
+  <h2>Zad. 1</h2>
+  <div id="zad1"></div>
+  <script>
+    function mojaFunkcja() {
+      document.write("Hello World!");
+    };
+
+    function mojaFunkcja1(a) {
+      return 2 * a + 4;
+    };
+
+    const input1 = document.createElement("input");
+    input1.type = "number";
+    input1.placeholder = "Podaj liczbę";
+    input1.addEventListener("change", function() {
+      const value = parseInt(input1.value);
+      document.getElementById("zad1").innerHTML = mojaFunkcja1(value);
+    });
+
+    document.getElementById("zad1").appendChild(input1);
+  </script>
+
+  <h2>Zad. 2</h2>
+  <div id="zad2"></div>
+  <script>
+    function mojaFunkcja2(imie) {
+      return "Hello " + imie;
+    };
+
+    const input2 = document.createElement("input");
+    input2.type = "text";
+    input2.placeholder = "Podaj imię";
+    input2.addEventListener("change", function() {
+      const value = input2.value;
+      document.getElementById("zad2").innerHTML = mojaFunkcja2(value);
+    });
+
+    document.getElementById("zad2").appendChild(input2);
+  </script>
+
+  <h2>Zad. 3</h2>
+  <div id="zad3"></div>
+  <script>
+    function poleKola(promien) {
+      return Math.PI * Math.pow(promien, 2);
+    }
+
+    const input3 = document.createElement("input");
+    input3.type = "number";
+    input3.placeholder = "Podaj promień koła";
+    input3.addEventListener("change", function() {
+      const value = parseFloat(input3.value);
+      document.getElementById("zad3").innerHTML = "Pole koła: " + poleKola(value);
+    });
+
+    document.getElementById("zad3").appendChild(input3);
+  </script>
+
+  <h2>Zad. 4</h2>
+  <div id="zad4"></div>
+  <script>
+    function silniaIteracyjnie(n) {
+      let wynik = 1;
+      for (let i = 2; i <= n; i++) {
+        wynik *= i;
+      }
+      return wynik;
+    }
+
+    const input4 = document.createElement("input");
+    input4.type = "number";
+    input4.placeholder = "Podaj liczbę dla silnii";
+    input4.addEventListener("change", function() {
+      const value = parseInt(input4.value);
+      document.getElementById("zad4").innerHTML = "Silnia (iteracyjnie): " + silniaIteracyjnie(value);
+    });
+
+    document.getElementById("zad4").appendChild(input4);
+  </script>
+
+  <h2>Zad. 5</h2>
+  <div id="zad5"></div>
+  <script>
+    function silniaRekurencyjnie(n) {
+      if (n <= 1) {
+        return 1;
+      } else {
+        return n * silniaRekurencyjnie(n - 1);
+      }
+    }
+
+    const input5 = document.createElement("input");
+    input5.type = "number";
+    input5.placeholder = "Podaj liczbę dla silnii";
+    input5.addEventListener("change", function() {
+      const value = parseInt(input5.value);
+      document.getElementById("zad5").innerHTML = "Silnia (rekurencyjnie): " + silniaRekurencyjnie(value);
+    });
+
+    document.getElementById("zad5").appendChild(input5);
+  </script>
+
+  <h2>Zad. 6</h2>
+  <div id="zad6"></div>
+  <script>
+    function nazwaDnia(numerDnia) {
+      switch (numerDnia) {
+        case 1:
+          return "Poniedziałek";
+        case 2:
+          return "Wtorek";
+        case 3:
+          return "Środa";
+        case 4:
+          return "Czwartek";
+        case 5:
+          return "Piątek";
+        case 6:
+          return "Sobota";
+        case 7:
+          return "Niedziela";
+        default:
+          return "Nieznany dzień";
+      }
+    }
+
+    const input6 = document.createElement("input");
+    input6.type = "number";
+    input6.placeholder = "Podaj numer dnia";
+    input6.addEventListener("change", function() {
+      const value = parseInt(input6.value);
+      document.getElementById("zad6").innerHTML = "Dzień " + value + " to " + nazwaDnia(value);
+    });
+
+    document.getElementById("zad6").appendChild(input6);
+  </script>
+
+  <h2>Zad. 7</h2>
+  <div id="zad7"></div>
+  <script>
+    function czyPelnoletni(wiek) {
+      return wiek >= 18;
+    }
+
+    const input7 = document.createElement("input");
+    input7.type = "number";
+    input7.placeholder = "Podaj wiek";
+    input7.addEventListener("change", function() {
+      const value = parseInt(input7.value);
+      if (czyPelnoletni(value)) {
+        document.getElementById("zad7").innerHTML = "Osoba jest pełnoletnia.";
+    } else {
+          document.getElementById("zad7").innerHTML = "Osoba jest nie pełnoletnia.";
+      }
+    });
+
+    document.getElementById("zad7").appendChild(input7);
+  </script>
+
+<h2>Zad. 8</h2>
+<div id="zad8"></div>
+<script>
+  function prostokat(x, y, znak) {
+    let prostokat = "";
+    for (let i = 0; i < y; i++) {
+      let linia = "";
+      for (let j = 0; j < x; j++) {
+        linia += znak;
+      }
+      prostokat += linia + "<br>";
+    }
+    document.getElementById("zad8").innerHTML = prostokat;
+  }
+
+  const input8X = document.createElement("input");
+  input8X.type = "number";
+  input8X.placeholder = "Szerokość prostokąta";
+  
+  const input8Y = document.createElement("input");
+  input8Y.type = "number";
+  input8Y.placeholder = "Wysokość prostokąta";
+  
+  const input8Znak = document.createElement("input");
+  input8Znak.type = "text";
+  input8Znak.placeholder = "Znak prostokąta";
+  
+  const input8Button = document.createElement("button");
+  input8Button.innerText = "Rysuj";
+  
+  input8Button.addEventListener("click", function() {
+    const szerokosc = parseInt(input8X.value);
+    const wysokosc = parseInt(input8Y.value);
+    const znak = input8Znak.value;
+    prostokat(szerokosc, wysokosc, znak);
+  });
+  
+  document.getElementById("zad8").appendChild(input8X);
+  document.getElementById("zad8").appendChild(input8Y);
+  document.getElementById("zad8").appendChild(input8Znak);
+  document.getElementById("zad8").appendChild(input8Button);
+</script>

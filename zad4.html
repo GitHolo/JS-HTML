@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skrypt Obsługi Tabeli</title>
+    <style>
+        .red-bg {
+            background-color: red;
+        }
+
+        .yellow-bg {
+            background-color: yellow;
+        }
+
+        .green-bg {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+
+<table id="tabela1">
+    <thead>
+        <tr>
+            <th>Produkt</th>
+            <th>Dostępna Ilość</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Produkt A</td>
+            <td>5</td>
+            <td>
+                <button onclick="aktualizujIlosc(this)">Aktualizuj</button>
+                <button onclick="zamow(this)">Zamów</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Produkt B</td>
+            <td>0</td>
+            <td>
+                <button onclick="aktualizujIlosc(this)">Aktualizuj</button>
+                <button onclick="zamow(this)">Zamów</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    let idZamowienia = 0;
+    function zaznaczBraki() {
+        document.getElementById('tabela1').querySelectorAll('tbody tr').forEach(wiersz => {
+            const dostepnaIlosc = parseInt(wiersz.cells[1].textContent);
+
+            if (dostepnaIlosc === 0) {
+                wiersz.cells[1].classList.add('red-bg');
+            } else if (dostepnaIlosc >= 1 && dostepnaIlosc <= 5) {
+                wiersz.cells[1].classList.add('yellow-bg');
+            } else {
+                wiersz.cells[1].classList.add('green-bg');
+            }
+        });
+}
+
+function aktualizujIlosc(button) {
+    const wiersz = button.closest('tr');
+    const nowaIlosc = prompt('Podaj nową ilość:');
+    wiersz.cells[1].textContent = nowaIlosc;
+
+    zaznaczBraki();
+}
+
+function zamow(button) {
+    const wiersz = button.closest('tr');
+    const produkt = wiersz.cells[0].textContent;
+
+    idZamowienia++;
+    alert(`Zamówienie nr: ${idZamowienia} Produkt: ${produkt}`);
+
+    zaznaczBraki();
+}
+
+zaznaczBraki();
+
+setInterval(zaznaczBraki, 1000);
+</script>
+
+</body>
+</html>

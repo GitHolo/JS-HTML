@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <body>
+<!--
+        <h1>zmiana tła</h1>
+    
+        <label for="backgroundSelector">Select background color:</label>
+        <select id="backgroundSelector" onchange="changeBackground()">
+            <option value="white">White</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+            <option value="pink">Pink</option>
+        </select>
+    
+        <script>
+            function changeBackground() {
+                document.body.style.backgroundColor = document.getElementById("backgroundSelector").value;
+            }
+        </script>
+
+    -->
+
+
+
+     <input type="radio" name="background" id="1" onchange="changeBackground('white')" checked>
+     <label for="1">White</label>
+ 
+     <input type="radio" name="background" id="2" onchange="changeBackground('blue')">
+     <label for="2">Blue</label>
+ 
+     <input type="radio" name="background" id="3" onchange="changeBackground('green')">
+     <label for="3">Green</label>
+ 
+     <input type="radio" name="background" id="4" onchange="changeBackground('pink')">
+     <label for="4">Pink</label>
+ 
+     <script>
+         function changeBackground(color) {
+             document.body.style.backgroundColor = color;
+         }
+     </script>
+ 
+    </body>
+</body>
+</html>

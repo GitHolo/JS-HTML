@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Ocena Pracownika</h1>
+
+        Znajomość języków:
+        <br>     
+        <label><input type="checkbox" id="java" onchange="points()"> Java</label>
+        <br>
+        <label><input type="checkbox" id="Python" onchange="points()"> Python</label>
+        <br>
+        <label><input type="checkbox" id="C" onchange="points()"> C++</label>
+    <br>
+    <label>
+        Poziom wykształcenia:
+        <select id="educationLevel" onchange="points()">
+            <option value="0">Brak</option>
+            <option value="5">Średnie</option>
+            <option value="10">Wyższe</option>
+            <option value="15">Wyższe inżynierskie</option>
+        </select>
+    </label>
+    <br>
+    Prawo jazdy:
+    <label>
+        <input type="radio" name="drivingLicense" value="0" id="noLicense" onchange="points()"> Brak
+    </label>
+    <label>
+        <input type="radio" name="drivingLicense" value="5" id="withLicense" onchange="points()"> Posiada
+    </label>
+        <br>
+    <label>
+        Czy pali:
+        <input type="checkbox" id="smoker" onchange="points()"> Tak
+    </label>
+
+    <div>
+        <h2>Suma punktów: <span id="totalPoints">0</span></h2>
+    </div>
+
+    <script>
+        function points() {
+            var java = document.getElementById("java").checked ? 10 : 0;
+            var Python = document.getElementById("Python").checked ? 10 : 0;
+            var C = document.getElementById("C").checked ? 10 : 0;
+
+            var educationPoints = parseInt(document.getElementById("educationLevel").value);
+            
+            var drivingLicensePoints = 0;
+            var withLicense = document.getElementById("withLicense").checked;
+            if (withLicense) {
+                drivingLicensePoints = 5;
+            }
+
+            var smokerPoints = document.getElementById("smoker").checked ? 50 : 0;
+
+            document.getElementById("totalPoints").innerText = java + Python + C + educationPoints + drivingLicensePoints + smokerPoints;
+        }
+    </script>
+
+</body>
+</html>

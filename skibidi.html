@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zadania JavaScript w HTML</title>
+</head>
+<body>
+
+<!-- Zadanie 1 -->
+<script>
+    var email = "loremimpsum@gmail.com";
+    if (email.includes("@")) {
+        document.write("email zawiera @<br>");
+    } else {
+        document.write("email nie zawiera @<br>");
+    }
+</script>
+
+<!-- Zadanie 2 -->
+<script>
+    var txt = "Hello World";
+    var nowyTekst = txt.replace("World", "Universe");
+    document.write(nowyTekst + "<br>");
+</script>
+
+<!-- Zadanie 3 -->
+<script>
+    var tekst = prompt("Podaj dowolny tekst:");
+    var dlugosc = tekst.length;
+    document.write("Długość tekstu: " + dlugosc + "<br>");
+</script>
+
+<!-- Zadanie 4 -->
+<script>
+    var tekst = prompt("Podaj dowolny tekst:");
+    var tekstDużymi = tekst.toUpperCase();
+    document.write(tekstDużymi + "<br>");
+</script>
+
+<!-- Zadanie 5 -->
+<script>
+    var tekst = prompt("Podaj dowolny tekst:");
+    var tekstMałymi = tekst.toLowerCase();
+    document.write(tekstMałymi + "<br>");
+</script>
+
+<!-- Zadanie 6 -->
+<script>
+    var pelneImieNazwisko = "Jan Kowalski";
+    var imie = pelneImieNazwisko.split(" ")[0];
+    document.write("Imię: " + imie + "<br>");
+</script>
+
+</body>
+</html>

@@ -1,3 +1,33 @@
+<?php
+$connection = new mysqli('localhost', 'root', '', 'auto');
+
+if ($connection->connect_error) {
+    die("Błąd połączenia z bazą danych: " . $connection->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $brand = $_POST['marka'];
+    $model = $_POST['model'];
+    $size = $_POST['rozmiar'];
+    $fuel = $_POST['paliwo'];
+    $color = $_POST['kolor'];
+    $parkingS = isset($_POST['opcje']) && in_array('czujnikParkowania', $_POST['opcje']) ? 1 : 0;
+    $abs = isset($_POST['opcje']) && in_array('abs', $_POST['opcje']) ? 1 : 0;
+    $conditioning = isset($_POST['opcje']) && in_array('klima', $_POST['opcje']) ? 1 : 0;
+
+    $sql = "INSERT INTO orders (brand, model, size, fuel, color, parkingS, abs, conditioning)
+            VALUES ('$brand', '$model', '$size', '$fuel', '$color', '$parkingS', '$abs', '$conditioning')";
+
+    if ($connection->query($sql) === TRUE) {
+        echo "Dane zostały dodane do bazy danych.";
+    } else {
+        echo "Błąd: " . $sql . "<br>" . $connection->error;
+    }
+}
+
+$connection->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -122,7 +152,7 @@
     const selectedModel = document.getElementById("model").value;
     const selectedKolor = document.getElementById("kolor").value;
 
-    const imageSrc = `${selectedMarka.toLowerCase()}-${selectedModel.toLowerCase().replace(/\s+/g, '')}-${selectedKolor.toLowerCase().replace(/\s+/g, '')}.png`;
+    const imageSrc = `img/${selectedMarka.toLowerCase()}-${selectedModel.toLowerCase().replace(/\s+/g, '')}-${selectedKolor.toLowerCase().replace(/\s+/g, '')}.png`;
 
     const previewContainer = document.getElementById("podglad");
     previewContainer.innerHTML = ""; 
